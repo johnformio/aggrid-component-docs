@@ -1,0 +1,246 @@
+---
+title: Simple Grid
+---
+import { Form } from '@formio/react';
+
+export const agGridForm = {
+  title: "agGrid",
+  type: "form",
+  display: "form",
+  components: [
+    {
+      label: "AG Grid",
+      agGridConfig: {
+        rowData: [
+          {
+            make: "Tesla",
+            model: "Model Y",
+            price: 64950,
+            electric: true,
+          },
+          {
+            make: "Ford",
+            model: "F-Series",
+            price: 33850,
+            electric: false,
+          },
+          {
+            make: "Toyota",
+            model: "Corolla",
+            price: 29600,
+            electric: false,
+          },
+        ],
+      },
+      tableView: true,
+      validateWhenHidden: false,
+      key: "aggrid",
+      type: "aggrid",
+      input: true,
+      components: [
+        {
+          label: "Make",
+          applyMaskOn: "change",
+          tableView: true,
+          validateWhenHidden: false,
+          key: "make",
+          type: "textfield",
+          input: true,
+        },
+        {
+          label: "Model",
+          applyMaskOn: "change",
+          tableView: true,
+          validateWhenHidden: false,
+          key: "model",
+          type: "textfield",
+          input: true,
+        },
+        {
+          label: "Price",
+          applyMaskOn: "change",
+          mask: false,
+          tableView: false,
+          delimiter: false,
+          requireDecimal: false,
+          inputFormat: "plain",
+          truncateMultipleSpaces: false,
+          validateWhenHidden: false,
+          key: "price",
+          type: "number",
+          input: true,
+        },
+        {
+          label: "Electric",
+          tableView: false,
+          defaultValue: false,
+          validateWhenHidden: false,
+          key: "electric",
+          type: "checkbox",
+          input: true,
+        },
+      ],
+    },
+    {
+      type: "button",
+      label: "Submit",
+      key: "submit",
+      disableOnInvalid: true,
+      input: true,
+      tableView: false,
+    },
+  ],
+};
+
+
+## Simple Grid
+This is a simple grid with no configurations.  It Reads data from a data source.
+
+By default the width of the grid will be 100% of the parent container.  You can set the width and height of the grid by setting parameters in the `agGridConfig` object, or constraing it with a wrappper element.
+
+AG-Grid will automatically vertially and horizontally scroll if the grid is larger than the parent container or the specified width and height.
+
+Sorting and filtering is enabled by default and uses the default ag-grid sorting and filtering behaviors..
+
+<details>
+    <summary>Grid configuration JSON</summary>
+```json
+    {
+      label: "AG Grid",
+      key: "aggrid",
+      type: "aggrid",
+      agGridConfig: {
+        rowData: [
+          {
+            make: "Tesla",
+            model: "Model Y",
+            price: 64950,
+            electric: true,
+          },
+          {
+            make: "Ford",
+            model: "F-Series",
+            price: 33850,
+            electric: false,
+          },
+          {
+            make: "Toyota",
+            model: "Corolla",
+            price: 29600,
+            electric: false,
+          },
+        ],
+      },
+      tableView: true,
+      validateWhenHidden: false,
+
+```
+</details>
+
+### Usage
+```jsx
+import { Form } from '@formio/react';
+import { agGridForm } from './agGridForm';
+
+<Form src={agGridForm} />
+```
+
+<Form src={agGridForm} />
+
+## Grid with width and height
+
+export const agGridForm2 = {
+  title: "agGrid",
+  type: "form",
+  display: "form",
+  components: [
+    {
+      label: "AG Grid",
+      agGridConfig: {
+
+        rowData: [
+          {
+            make: "Tesla",
+            model: "Model Y",
+            price: 64950,
+            electric: true,
+          },
+          {
+            make: "Ford",
+            model: "F-Series",
+            price: 33850,
+            electric: false,
+          },
+          {
+            make: "Toyota",
+            model: "Corolla",
+            price: 29600,
+            electric: false,
+          },
+        ],
+      },
+      tableView: true,
+      validateWhenHidden: false,
+      key: "aggrid",
+      type: "aggrid",
+      input: true,
+      "aggridWidth": 600,
+      "aggridHeight": 400,
+      components: [
+        {
+          label: "Make",
+          applyMaskOn: "change",
+          tableView: true,
+          validateWhenHidden: false,
+          key: "make",
+          type: "textfield",
+          input: true,
+        },
+        {
+          label: "Model",
+          applyMaskOn: "change",
+          tableView: true,
+          validateWhenHidden: false,
+          key: "model",
+          type: "textfield",
+          input: true,
+        },
+        {
+          label: "Price",
+          applyMaskOn: "change",
+          mask: false,
+          tableView: false,
+          delimiter: false,
+          requireDecimal: false,
+          inputFormat: "plain",
+          truncateMultipleSpaces: false,
+          validateWhenHidden: false,
+          key: "price",
+          type: "number",
+          input: true,
+        },
+        {
+          label: "Electric",
+          tableView: false,
+          defaultValue: false,
+          validateWhenHidden: false,
+          key: "electric",
+          type: "checkbox",
+          input: true,
+        },
+      ],
+    },
+    {
+      type: "button",
+      label: "Submit",
+      key: "submit",
+      disableOnInvalid: true,
+      input: true,
+      tableView: false,
+    },
+  ],
+};
+
+  
+
+<Form src={agGridForm2} />
