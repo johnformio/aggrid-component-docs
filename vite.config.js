@@ -5,6 +5,7 @@ import remarkFrontmatter from 'remark-frontmatter';
 import path from "path"
 import { fileURLToPath } from 'url';
 import tailwindcss from "@tailwindcss/vite"
+import {frontmatterCollector} from './frontmatter-parser.js'
 
 
 // https://vite.dev/config/
@@ -15,6 +16,7 @@ export default defineConfig({
       remarkPlugins: [remarkFrontmatter]
     }),
     tailwindcss(),
+    frontmatterCollector(),
   ],
   resolve: {
     alias: {

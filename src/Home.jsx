@@ -1,13 +1,55 @@
 
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Table } from "lucide-react"
+import { Link } from "react-router-dom"
+import { getMdxNavigationItems } from './lib/mdx-navigation'
+
+
+function ExampleCardList() {
+  const navigationItems = getMdxNavigationItems();
+  return (
+    <div className="container mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-8">Navigation</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {navigationItems.map((item) => (
+          <Link key={item.href} to={item.href} className="block">
+            <Card className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer">
+              <CardHeader className="pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Table className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl">{item.name}</CardTitle>
+                </div>
+              </CardHeader>
+              {item.description && (
+                <CardContent>
+                  <CardDescription className="text-sm text-muted-foreground">{item.description}</CardDescription>
+                </CardContent>
+              )}
+            </Card>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
-    <div>
-      <h1 className="text-4xl font-bold mb-4">Formio Ag-Grid Custom Component Examples</h1>
-      <p className="text-lg text-gray-700 mb-8">
-        This is a collection of examples demonstrating how to use Formio with Ag-Grid and custom components. 
-        You can explore various features and functionalities provided by Formio in conjunction with Ag-Grid.
-      </p>
-      
-    </div>
+    <> 
+    <Card>
+      <CardHeader>
+        <h2 className="text-xl font-bold">Welcome to Formio Ag-Grid Examples</h2>
+      </CardHeader>
+      <CardContent>
+        <p className="text-gray-700">
+          This project showcases how to integrate Formio with Ag-Grid, providing a powerful combination for building dynamic forms and data grids.
+        </p>
+      </CardContent>
+    </Card>
+    <ExampleCardList />
+    </>
+  
   );
 }
