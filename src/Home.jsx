@@ -34,6 +34,101 @@ function ExampleCardList() {
     </div>
   )
 }
+export const agGridForm2 = {
+  title: "agGrid",
+  type: "form",
+  display: "form",
+  components: [
+    {
+      label: "AG Grid",
+      agGridConfig: {
+
+        rowData: [
+          {
+            make: "Tesla",
+            model: "Model Y",
+            price: 64950,
+            electric: true,
+          },
+          {
+            make: "Ford",
+            model: "F-Series",
+            price: 33850,
+            electric: false,
+          },
+          {
+            make: "Toyota",
+            model: "Corolla",
+            price: 29600,
+            electric: false,
+          },
+        ],
+      },
+      tableView: true,
+      validateWhenHidden: false,
+      key: "aggrid",
+      type: "aggrid",
+      input: true,
+      "aggridWidth": 600,
+      "aggridHeight": 400,
+      components: [
+        {
+          label: "Make",
+          applyMaskOn: "change",
+          tableView: true,
+          validateWhenHidden: false,
+          key: "make",
+          type: "textfield",
+          input: true,
+        },
+        {
+          label: "Model",
+          applyMaskOn: "change",
+          tableView: true,
+          validateWhenHidden: false,
+          key: "model",
+          type: "textfield",
+          input: true,
+        },
+        {
+          label: "Price",
+          applyMaskOn: "change",
+          mask: false,
+          tableView: false,
+          delimiter: false,
+          requireDecimal: false,
+          inputFormat: "plain",
+          truncateMultipleSpaces: false,
+          validateWhenHidden: false,
+          key: "price",
+          type: "number",
+          input: true,
+        },
+        {
+          label: "Electric",
+          tableView: false,
+          defaultValue: false,
+          validateWhenHidden: false,
+          key: "electric",
+          type: "checkbox",
+          input: true,
+        },
+      ],
+    },
+    {
+      type: "button",
+      label: "Submit",
+      key: "submit",
+      disableOnInvalid: true,
+      input: true,
+      tableView: false,
+    },
+  ],
+};
+
+  
+
+
 
 export default function Home() {
   return (

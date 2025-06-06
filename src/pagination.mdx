@@ -4,7 +4,7 @@ description: Paginate the results of the table contents.
 path: /pagination
 ---
 
-import { Form } from '@formio/react';
+import PaginatedForm from './components/paginated-form.jsx';
 
 ## Pagination
 Pagination can be configured with in the component.  We use the ag-grid (client-side pagination model)[https://www.ag-grid.com/javascript-data-grid/row-models/#client-side] for pagintation.
@@ -17,11 +17,7 @@ Pagination can be configured with in the component.  We use the ag-grid (client-
   "key": "aggrid",
   "type": "aggrid",
   "agGridConfig": {
-    "rowData": [
-      { "make": "Tesla", "model": "Model Y", "price": 64950, "electric": true },
-      { "make": "Ford", "model": "F-Series", "price": 33850, "electric": false },
-      { "make": "Toyota", "model": "Corolla", "price": 29600, "electric": false }
-    ],
+    "rowData": [...],
     "paginationPageSize": 2,
     "pagination": true
   },
@@ -31,4 +27,4 @@ Pagination can be configured with in the component.  We use the ag-grid (client-
 ```
 </details>
 
-<Form src={"https://remote-next.form.io/mynpjjqdteworwi/aggridwithdatasource"} />
+<PaginatedForm />
