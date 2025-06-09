@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="max-w-prose p-6 lg:text-lg">
+      <main className="max-w-prose pl-6 lg:text-lg">
         <SidebarTrigger />
         {children}
       </main>

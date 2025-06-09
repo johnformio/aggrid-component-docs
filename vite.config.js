@@ -13,7 +13,8 @@ export default defineConfig({
   plugins: [
     react(), 
     mdx({
-      remarkPlugins: [remarkFrontmatter]
+      remarkPlugins: [remarkFrontmatter],
+      providerImportSource: '@mdx-js/react',
     }),
     tailwindcss(),
     frontmatterCollector(),

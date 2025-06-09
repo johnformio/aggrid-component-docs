@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import './App.css'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import SimpleGrid from './simple-grid.mdx'
+
 import {FormioProvider } from "@formio/react";
 import { Formio } from "@formio/js";
 import premium from "@formio/premium";
@@ -25,6 +25,8 @@ const mdxModules = import.meta.glob('./*.mdx', { eager: true });
 const mdxRoutes = () => {
   return Object.entries(mdxModules).map(([path, mod]) => {
     const fileName = path.replace('./', '').replace('.mdx', '');
+    console.log(`Loading MDX file: ${fileName}`);
+    
     const Component = mod.default;
     return (
       <Route
@@ -33,20 +35,26 @@ const mdxRoutes = () => {
         element={
         <Layout>
           <MdxLayout>
-          <Component />
+            <Component />
           </MdxLayout>
         </Layout>}
       />
     );
   });
 };
+const MDXComponents = {
+  h1: (props) => <h1 className="text-3xl font-bold mb-8" {...props} />,
+  h2: (props) => <h2 className="text-2xl font-bold mb-6" {...props} />,
+  h3: (props) => <h3 className="text-xl font-semibold mb-4" {...props} />,
+  h4: (props) => <h4 className="text-lg font-medium mb-4" {...props} />,
+}
 
 export default function App() {
   
   
   return (
     <FormioProvider Formio={Formio}>
-      <MDXProvider components={{ wrapper: MdxLayout }}>
+      <MDXProvider components={MDXComponents}>
         <SidebarProvider>
           <BrowserRouter>
             <Routes>

@@ -7,6 +7,19 @@ const onFormReadyHandler = (webform) => {
     setTimeout(() => {
       const agGridComponent = webform.getComponent("aggrid");
       const agGrid = agGridComponent?.agGrid;
+      agGrid.updateGridOptions({
+        columnDefs:[
+            { field: "company", headerName: "Company", pinned: true },
+            { field: "mission", headerName: "Mission" },
+            
+            { field: "location", headerName: "Location" },
+            { field: "date", headerName: "Date" },
+            { field: "time", headerName: "Time" },
+            { field: "rocket", headerName: "Rocket" },
+            { field: "price", headerName: "Price" },
+            { field: "successful", headerName: "Successful" },
+        ]
+      })
       
     }, 100);
   };
