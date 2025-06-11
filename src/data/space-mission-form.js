@@ -107,6 +107,8 @@ export const spaceMissionForm = {
     "components": [
       {
         "label": "AG Grid",
+        "key": "aggrid",
+        "type": "aggrid",
         "pagination": true,
         "paginationAutoPageSize": false,
         "paginationPageSize": 100,
@@ -118,8 +120,6 @@ export const spaceMissionForm = {
         "submitSelectedRows": true,
         "calculateValue": "if (data.dataSource) {\n  value = data.dataSource\n}",
         "validateWhenHidden": false,
-        "key": "aggrid1",
-        "type": "aggrid",
         "height": 500,
         "input": true,
         "components": [
