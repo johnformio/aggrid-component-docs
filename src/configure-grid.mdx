@@ -7,5 +7,53 @@ path: /configure-grid
 import GridConfigForm from './components/grid-config-form.jsx';
 
 ## Configuring the Grid from your application
+Ag-Grid has a very complex configuration system that allows you to customize the grid in many ways. It also exposes an api to programmatically change the grid at runtime.
 
+You can access the api from the grid component by listening the the `agGridReady` event. This event is triggered when the grid is ready to be used and the api is available.
+
+For example you can change the grid column configuration from the client application, in this example
+
+```jsx
+const onFormReadyHandler = (webform) => {
+      const agGridComponent = webform.getComponent("aggrid");
+      agGridComponent.on('agGridReady', ({api}) => {
+        api.updateGridOptions({
+            columnDefs:[
+                { field: "company", headerName: "Company", pinned: true },
+                { field: "mission", headerName: "Mission" },
+                
+                { field: "location", headerName: "Location" },
+                { field: "date", headerName: "Date" },
+                { field: "time", headerName: "Time" },
+                { field: "rocket", headerName: "Rocket" },
+                { field: "price", headerName: "Price" },
+                { field: "successful", headerName: "Successful" },
+            ],
+            selectionColumnDef: {
+                sortable: true,
+                resizable: true,
+                // width: 120,
+                suppressHeaderMenuButton: false,
+                pinned: "left",
+              },
+        })
+      })
+      
+      
+      
+};
+
+
+export default function GridConfigForm() {
+    return (
+        <Form
+            form={spaceMissionForm}
+            onFormReady={onFormReadyHandler}
+            onSubmit={(submission) => {
+                console.log('Submission:', submission);
+              }}
+        />  
+    );
+}
+```
 <GridConfigForm />

@@ -4,8 +4,6 @@ import {spaceMissionForm} from '../data/space-mission-form.js';
 spaceMissionForm.components[0].agGridConfig.rowData = rowData;
 
 const onFormReadyHandler = (webform) => {
-    // This function is called when the form is ready
-    console.log('Form is ready:', webform);
       const agGridComponent = webform.getComponent("aggrid");
       agGridComponent.on('agGridReady', ({api}) => {
         api.updateGridOptions({
