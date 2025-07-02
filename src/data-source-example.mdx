@@ -1,0 +1,35 @@
+---
+title: Data Source Example
+description: Connecting the Grid to a Data Source component
+
+path: /data-source-example
+---
+import {Form} from '@formio/react';
+
+# Connecting to a Data Source Component
+You can use the `DataSource` component to connect the Grid to a data source. This component allows you to define how the Grid retrieves and manages data.
+
+To use a Data Source, you need to add the `Data Source` component to your form and connect it to the grid using a *Custom Default Value* script in your grid.
+
+## Custom Default Value Script
+Use the following script in the *Custom Default Value* field of your grid to connect it to the Data Source:
+
+    
+
+```javascript
+if (data.dataSource) {
+  // dataSource is the property Name of the Data Source on the form
+  instance.setRowData(data.dataSource)
+}
+```
+
+<details>
+ <summary>Explanation:</summary>
+  - `data.dataSource` refers to the Data Source component on your form, check to see if it has been set.
+  - `instance.rowData` is the component property you set as the grid data.
+  - `instance.redraw()` refreshes the grid to display the new data.
+
+</details>
+
+
+    <Form src="https://remote-dev.form.io/yzookuzrcdulxkk/aggridwithdatasource" />
