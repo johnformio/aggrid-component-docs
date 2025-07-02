@@ -62,12 +62,25 @@ export default function SubmitData() {
     
     if (submissionsLoading) return <div>Loading submissions...</div>;
     
-    console.log(submissions);
+    
+    function handleFormSubmit(submission, saved?: boolean | undefined): void {
+        console.log('Form submitted:', submission);
+        const subIndex = submissions.findIndex((s) => s.form === submission.form);
+        if(subIndex !== -1) {
+            setSelectedSubmissionIndex(subIndex);
+        } else {
+            submissions.push(submission);
+            setSelectedSubmissionIndex(submissions.length - 1);
+        }
+        // Handle form submission logic here
+        // For example, you might want to save the submission to a database or perform some action
+    }
+
     return (
         <div>
             <h1>Select Submission</h1>
             <SubmissionsSelection submissions={submissions} onSelectChange={handleSelectChange}  />
-            <Form src="https://remote-dev.form.io/yzookuzrcdulxkk/carsgrid" submission={selectedSubmissionIndex ? submissions[selectedSubmissionIndex] : undefined} />
+            <Form src="https://remote-dev.form.io/yzookuzrcdulxkk/carsgrid" onSubmit={handleFormSubmit} submission={selectedSubmissionIndex !== null ? submissions[selectedSubmissionIndex] : undefined} />
 
         </div>
     );

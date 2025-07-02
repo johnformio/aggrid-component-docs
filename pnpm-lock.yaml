@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@formio/aggrid':
-        specifier: 1.0.0-rc.7-dev.1
-        version: 1.0.0-rc.7-dev.1(@formio/js@5.1.2(@popperjs/core@2.11.8))
+        specifier: 1.0.0-rc.7-dev.2
+        version: 1.0.0-rc.7-dev.2(@formio/js@5.1.2(@popperjs/core@2.11.8))
       '@formio/bootstrap':
         specifier: ^3.1.1
         version: 3.1.1
@@ -422,8 +422,8 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@formio/aggrid@1.0.0-rc.7-dev.1':
-    resolution: {integrity: sha512-llc2XcV3whf1bd5ksosXeUANcBTc98Lwh1OoGyxbR1JEE/MNqNXD299QOau9ON6suYRYo0gK3xYKdeFL211ecA==}
+  '@formio/aggrid@1.0.0-rc.7-dev.2':
+    resolution: {integrity: sha512-GeTQ//34RtZENoouKmEg8Rkx+7Ivhga8/XUtKf4iWKBktEEnea7zA1CcHsFedPqv449p3ABTNJMHpgF2pu4ITw==}
     peerDependencies:
       '@formio/js': ^5.1.1
 
@@ -2686,7 +2686,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@formio/aggrid@1.0.0-rc.7-dev.1(@formio/js@5.1.2(@popperjs/core@2.11.8))':
+  '@formio/aggrid@1.0.0-rc.7-dev.2(@formio/js@5.1.2(@popperjs/core@2.11.8))':
     dependencies:
       '@formio/js': 5.1.2(@popperjs/core@2.11.8)
       ag-grid-community: 33.3.2
