@@ -1,5 +1,5 @@
 'use client';
-import { Form } from '@formio/react';
+import { Form, Submission } from '@formio/react';
 import { useEffect, useState } from 'react';
 import { useFormioContext } from '@formio/react';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
@@ -7,7 +7,7 @@ import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/c
 const form = 'https://remote-dev.form.io/yzookuzrcdulxkk/carsgrid';
 
 type SubmissionsSelectionProps = {
-    submissions: Array<{ _id: string }>;
+    submissions: Submission[];
     onSelectChange: (value: string) => void;
 };
 
@@ -20,8 +20,8 @@ const SubmissionsSelection = ({ submissions, onSelectChange }: SubmissionsSelect
             </SelectTrigger>
             <SelectContent>
                 {submissions.map((submission, i) => (
-                    <SelectItem key={submission._id} value={i}>
-                        {i}
+                    <SelectItem key={submission._id as string} value={i.toString()}>
+                        {i.toString()}
                     </SelectItem>
                 ))}
             </SelectContent>
@@ -33,9 +33,9 @@ const SubmissionsSelection = ({ submissions, onSelectChange }: SubmissionsSelect
 
 export default function SubmitData() {
     const { Formio } = useFormioContext();
-    const [submissions, setSubmissions] = useState([]);
+    const [submissions, setSubmissions] = useState<Submission[]>([]);
     const [submissionsLoading, setSubLoading] = useState(true);
-    const [selectedSubmissionIndex, setSelectedSubmissionIndex] = useState<any | null>(null);
+    const [selectedSubmissionIndex, setSelectedSubmissionIndex] = useState<number | null>(null);
 
     useEffect(() => {
         // Fetch data when component mounts
@@ -56,14 +56,15 @@ export default function SubmitData() {
     
     function handleSelectChange(value: string): void {
         console.log(`Selected submission ID: ${value}`);
-        setSelectedSubmissionIndex(value);
+
+        setSelectedSubmissionIndex(Number(value));
     }
 
     
     if (submissionsLoading) return <div>Loading submissions...</div>;
     
     
-    function handleFormSubmit(submission, saved?: boolean | undefined): void {
+    function handleFormSubmit(submission: Submission, saved?: boolean | undefined): void {
         console.log('Form submitted:', submission);
         const subIndex = submissions.findIndex((s) => s.form === submission.form);
         if(subIndex !== -1) {
@@ -81,7 +82,6 @@ export default function SubmitData() {
             <h1>Select Submission</h1>
             <SubmissionsSelection submissions={submissions} onSelectChange={handleSelectChange}  />
             <Form src="https://remote-dev.form.io/yzookuzrcdulxkk/carsgrid" onSubmit={handleFormSubmit} submission={selectedSubmissionIndex !== null ? submissions[selectedSubmissionIndex] : undefined} />
-
         </div>
     );
 }
