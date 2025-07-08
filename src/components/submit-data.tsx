@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useFormioContext } from '@formio/react';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
 
-const form = 'https://remote-dev.form.io/yzookuzrcdulxkk/carsgrid';
+const form = 'http://localhost:3000/ssgzluhclhyewdb/aggrid';
 
 type SubmissionsSelectionProps = {
     submissions: Submission[];
@@ -42,7 +42,8 @@ export default function SubmitData() {
         const fetchSubmissions = async () => {
             try {
                 const formio = new Formio(form);
-                const data = await formio.loadSubmissions();
+                const data: Submission[] = await formio.loadSubmissions();
+                data.forEach((submission) => delete submission._id);
                 setSubmissions(data);
             } catch (error) {
                 console.error('Error loading submissions:', error);
@@ -81,7 +82,7 @@ export default function SubmitData() {
         <div>
             <h1>Select Submission</h1>
             <SubmissionsSelection submissions={submissions} onSelectChange={handleSelectChange}  />
-            <Form src="https://remote-dev.form.io/yzookuzrcdulxkk/carsgrid" onSubmit={handleFormSubmit} submission={selectedSubmissionIndex !== null ? submissions[selectedSubmissionIndex] : undefined} />
+            <Form src={form} onSubmit={handleFormSubmit} submission={selectedSubmissionIndex !== null ? structuredClone(submissions[selectedSubmissionIndex]) : undefined} />
         </div>
     );
 }
