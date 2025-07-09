@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useFormioContext } from '@formio/react';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
 
-const form = 'http://localhost:3000/ssgzluhclhyewdb/aggrid';
+const form = 'http://localhost:3000/ureruosrbpknfgf/agtest';
 
 type SubmissionsSelectionProps = {
     submissions: Submission[];
@@ -38,7 +38,6 @@ export default function SubmitData() {
     const [selectedSubmissionIndex, setSelectedSubmissionIndex] = useState<number | null>(null);
 
     useEffect(() => {
-        // Fetch data when component mounts
         const fetchSubmissions = async () => {
             try {
                 const formio = new Formio(form);
@@ -53,7 +52,7 @@ export default function SubmitData() {
         };
         
         fetchSubmissions();
-    }, [Formio]);
+    }, []);
     
     function handleSelectChange(value: string): void {
         console.log(`Selected submission ID: ${value}`);
@@ -65,17 +64,8 @@ export default function SubmitData() {
     if (submissionsLoading) return <div>Loading submissions...</div>;
     
     
-    function handleFormSubmit(submission: Submission, saved?: boolean | undefined): void {
+    function handleFormSubmit(submission: Submission): void {
         console.log('Form submitted:', submission);
-        const subIndex = submissions.findIndex((s) => s.form === submission.form);
-        if(subIndex !== -1) {
-            setSelectedSubmissionIndex(subIndex);
-        } else {
-            submissions.push(submission);
-            setSelectedSubmissionIndex(submissions.length - 1);
-        }
-        // Handle form submission logic here
-        // For example, you might want to save the submission to a database or perform some action
     }
 
     return (
