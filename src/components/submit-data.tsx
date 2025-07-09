@@ -82,7 +82,7 @@ export default function SubmitData() {
 
     return (
         <div>
-            <Input></Input>
+            
             <h3>Select Submission</h3>
             <SubmissionsSelection submissions={submissions} onSelectChange={handleSelectChange}
                                   value={selectedSubmissionIndex !== null ? String(selectedSubmissionIndex) : ''}/>
