@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@formio/aggrid": "1.0.0-rc.7-dev.2",
+    "@formio/aggrid": "1.0.0-rc.7-dev.3",
     "@formio/bootstrap": "^3.1.1",
     "@formio/js": "^5.1.1",
     "@formio/premium": "3.0.4",
