@@ -7,4 +7,27 @@ path: submit-data
 
 import SubmitDataForm from './components/submit-data.jsx';
 
+# Submitting Data from the Grid
+You can enable submitting data from the grid by setting "Submit Selected Rows".  When you enable this, the rows will include a checkbox to select which rows should be submitted with the form.
+
+This will also enable manually adding rows to the grid, which can be submitted with the form to the form as well.  Manually added rows will include buttons to remove or edit the rows.
+
+<details>
+    <summary>Grid configuration JSON</summary>
+```json
+{
+  "label": "AG Grid",
+  "key": "aggrid",
+  "type": "aggrid",
+  "agGridConfig": {
+    ...
+  },
+  "submitSelectedRows": true,
+  "tableView": true,
+  "validateWhenHidden": false
+}
+```
+</details>
+
+
 <SubmitDataForm />
